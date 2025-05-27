@@ -76,7 +76,7 @@ const plantsData = [
         checkFrequency: "7-14 días (más cerca de 7-10 días con calor).",
         tip: "Muy tolerante a la sequía. ¡No la ahogues! Agua reposada o filtrada es mejor."
     },
-    {,
+    {
         name: "Calathea zebrina",
         scientificName: "Goeppertia zebrina",
         emoji: "🦓",
