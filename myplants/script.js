@@ -51,7 +51,7 @@ const plantsData = [
         scientificName: "Epipremnum aureum 'Neon'",
         emoji: "🪴",
         imagePlaceholder: "Imagen de Potho Neón", // Retained for consistency, though imageUrl is primary
-        imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuD69R8CyZPxc_TVEjSxc5sPzc2b6Kj_Uwvk2IPuzn4ERxRFUepVxaXC1FnR2ZG1_Qnq0eFPEBV4C-UCHz3gjlPgbY9rZKDelDshFoiq9XN5d3DGSbhi9_MbkDyzvz5oTiJoaX3fFBLyL_S_AT9T3y1hqJdqkgEjPZi0gUU-sHgu_XtwboKbLLGSM1g4fvcRKO5E53aj_AIfMriMXRVtlHLyxKxUu60xhkjh4PSWNxH07Qo60cA13HbWCIry4dAu79xmu5y2HyFOkdZv",
+        imageUrl: "image/photoneon.jpg",
         watering: "Cuando los 2-5 cm superiores del sustrato estén secos.",
         checkFrequency: "3-5 días (con 25.7°C).",
         tip: "Prefiere quedarse un poco corto de agua que pasarse. Hojas lacias pueden ser señal de sed."
@@ -61,7 +61,7 @@ const plantsData = [
         scientificName: "Chamaedorea elegans",
         emoji: "🌴",
         imagePlaceholder: "Imagen de Palmera de Salón",
-        imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuBxF6ufV57JxhMcMD8Yg-_ZNKEjkVF0pCFWws-QzxKnf-fwUC2PqMl1BOgjlvJFQpUXH1TVUBGf6yfwQrY2Botxzs1MP7gkyttLgMbqULNS7rYoTIaDY3QnQStjCAo3ierfX6iqJ8Q9hPtqIs_LDjd5bRvxFiI4PWFbHAnaHT3qHi9loeW1-kn2cM2egsy-FvqzZ1r9itY1_dB4kt3p-0iQ31dSmOXk-qsjKNM9-fphaNFnOvvwnWDiMEhcUyU0cCL5PcxHn1v5RbWh",
+        imageUrl: "image/palmerasalon.jpg",
         watering: "Cuando los 2-3 cm superiores del sustrato estén secos.",
         checkFrequency: "4-7 días (más cerca de 4-5 días con calor).",
         tip: "Sensible al exceso de agua. La humedad ambiental actual le gusta."
@@ -71,7 +71,7 @@ const plantsData = [
         scientificName: "Dracaena fragrans - Tronco de Brasil",
         emoji: "🌱",
         imagePlaceholder: "Imagen de Dracaena",
-        imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuAS9iJ1nZhy7AK0D9Y12Q-j73OlCy1pqJH9B0PnSNEyO-CCk3FbpuCuinvzpwHh6Xa2mqjiBBlKj-N5xWF2B7BNyEFE6AUOrPnD7aMjHXbz5wkbYe1OALf8wmh6Wjvhm2Z-ORJ4Kxq_JcqgiFIQIz-nD8_x6-edFLvjYUHFHHiDJv8s1KcQAuUnUISJx01yEjcI6XWQvyXL3wmIjOQ7irovALqVKdftuV5ZfHltV7LaCmmEyI38TIzhjJ60h73lRpM3MwYVWIBVONiL",
+        imageUrl: "image/dracaena.jpg",
         watering: "Cuando los primeros 5 cm (o 1/3 de la maceta) estén bien secos.",
         checkFrequency: "7-14 días (más cerca de 7-10 días con calor).",
         tip: "Muy tolerante a la sequía. ¡No la ahogues! Agua reposada o filtrada es mejor."
@@ -81,7 +81,7 @@ const plantsData = [
         scientificName: "Goeppertia zebrina",
         emoji: "🦓",
         imagePlaceholder: "Imagen de Calathea zebrina",
-        imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuAzn0mrozxgKJQd6S4nMgvtGBtzAsCwAbefAB_xpAnKJTOsSrHcMk-rDQC0RojFhk1yFTl4es0mcDh2OdoMc99rqGAQTK-ODt_2jqzLLolALZpfTvSdfDpX8wGm65TpDgf8_okWJhJ-Si9Gj_AqdwACcl-Hg2QvWRMte90T6PFm3hPmr1h12pt4TfOLkn8-0zvS_OhWvXUweXcb2fBFoVtmldJ0K6kLPfDERO2P00BhUiQI84wHLcUNmuGK6mzwjDx72PuR9iyYyNNo",
+        imageUrl: "image/calatheazebra.jpg",
         watering: "Cuando el centímetro superior del sustrato comience a secarse. Mantener húmedo, no empapado.",
         checkFrequency: "2-4 días (necesita atención frecuente con calor).",
         tip: "¡Ama la humedad! El 66.8% es genial. Agua filtrada o de lluvia es ideal."
@@ -91,7 +91,7 @@ const plantsData = [
         scientificName: "Yucca elephantipes",
         emoji: "🌵",
         imagePlaceholder: "Imagen de Yuca",
-        imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuD2Q7G_qv47fu0C4PtOlRxvNM8TXKw859bZefl3wvvR9XXNWGzxSjk58t3rVpxxHEVNG8f1KmGxQe4WOpQJa3cWTUp_e0kv0QMS69LxoethGRBS-dAIBGHMC70vOs4PJ1szqgwyTltIJkANJVVsZBOHff7h-hYSD8p5eQPC6N7O8Hmnou2ntauGihlyjfgX-Vob7BAkZwWgd-dje1lMRXjBm5VEONuMAb8oAyXSjvb23eDdBrpDMPCZ0oL-yhZ8xGTpxssb96sQFdSG",
+        imageUrl: "image/yuca.jpg",
         watering: "Cuando la mayor parte del sustrato esté seco. Muy tolerante a la sequía.",
         checkFrequency: "10-20 días (o más si está a pleno sol).",
         tip: "El exceso de riego es su enemigo. Drenaje excelente es crucial."
@@ -101,7 +101,7 @@ const plantsData = [
         scientificName: "Chrysalidocarpus lutescens",
         emoji: "🌞",
         imagePlaceholder: "Imagen de Palmera Areca",
-        imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuCgxccFaX5vR_X2obcvrNf2q4nUY2UqWj2ME_NyBMsCjvvsqcFCBwfVAkCSujl6770eLOgqpRIJJrQJQVufEKfaOmQHYl30YOq-wchTufkYXy5uHH65e67yv4rBreFolNtCRYJ20mC3qkenVFQZq-bNX0GB6A_cfaw_Hz5pJxffqCO2GP0nwTXRE6jD-J7m9rWoquPZsPls1jEzYti7CK8DSmyuTjuktWlctt8aGiP3g3DRYutPzrMdg0MeFAn3UEjVaNlxW_emzMzI",
+        imageUrl: "image/palmeraareca.jpg",
         watering: "Cuando los 2-4 cm superiores del sustrato estén secos.",
         checkFrequency: "4-7 días.",
         tip: "Le gusta la humedad ambiental. Evita que se seque por completo."
@@ -111,7 +111,7 @@ const plantsData = [
         scientificName: "Epipremnum aureum",
         emoji: "✨",
         imagePlaceholder: "Imagen de Poto Dorado Colgante",
-        imageUrl: "https://placehold.co/600x400/A7F3D0/166534?text=Poto+Colgante", // Original placeholder
+        imageUrl: "image/photo.jpg", // Original placeholder
         watering: "Cuando los 2-5 cm superiores del sustrato estén secos.",
         checkFrequency: "5-10 días.",
         tip: "Muy resistente. Similar al Potho Neón, mejor pecar de seco que de húmedo."
