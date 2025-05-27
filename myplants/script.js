@@ -45,6 +45,20 @@ function formatDateAsAgo(dateString) {
     }
 }
 
+function isWateredToday(dateString) {
+    try {
+        const date = new Date(dateString);
+        const today = new Date();
+        
+        return date.getDate() === today.getDate() &&
+               date.getMonth() === today.getMonth() &&
+               date.getFullYear() === today.getFullYear();
+    } catch (e) {
+        console.error("Error checking if watered today:", e);
+        return false;
+    }
+}
+
 const plantsData = [
     {
         name: "Potho Neón",
@@ -193,8 +207,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const wateredButton = document.createElement('button');
         wateredButton.className = 'watered-button w-full px-3 py-1.5 text-xs font-medium text-center text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300';
         wateredButton.id = `watered-btn-${plantIdForElement}`;
-        wateredButton.textContent = 'Regada hoy';
+        wateredButton.textContent = 'Regar';
         wateredButton.dataset.plantname = plant.name;
+
+        // Verificar si la planta fue regada hoy
+        const storageKey = `plantCareApp_lastWatered_${plantIdForElement}`;
+        const storedDate = localStorage.getItem(storageKey);
+        const wasWateredToday = storedDate ? isWateredToday(storedDate) : false;
+        
+        // Ocultar el botón si fue regada hoy
+        if (wasWateredToday) {
+            wateredButton.style.display = 'none';
+        }
 
         buttonContainer.appendChild(lastWateredDisplay);
         buttonContainer.appendChild(wateredButton);
@@ -205,8 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
         card.appendChild(contentWrapper);
 
         // Load and display stored date
-        const storageKey = `plantCareApp_lastWatered_${plantIdForElement}`;
-        const storedDate = localStorage.getItem(storageKey);
         if (storedDate) {
             lastWateredDisplay.textContent = formatDateAsAgo(storedDate);
         } else {
@@ -223,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event Delegation for "Regada hoy" buttons
     allPlantsGrid.addEventListener('click', function(event) {
-        const targetButton = event.target.closest('.watered-button'); // Handles clicks on button or its children
+        const targetButton = event.target.closest('.watered-button');
         
         if (targetButton) {
             const plantName = targetButton.dataset.plantname;
@@ -243,6 +265,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     console.error(`Display element not found for ${plantName}`);
                 }
+
+                // Ocultar el botón después de regar
+                targetButton.style.display = 'none';
             }
         }
     });
