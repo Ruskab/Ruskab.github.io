@@ -76,9 +76,9 @@ const plantsData = [
         emoji: "🌱",
         imagePlaceholder: "Imagen de Dracaena",
         imageUrl: "image/dracaena_fragrans_hawaiian.png",
-        watering: "",
-        checkFrequency: "",
-        tip: ""
+        watering: "Cuando los primeros 5 cm (o 1/3 de la maceta) estén bien secos.",
+        checkFrequency: "7-14 días (más cerca de 7-10 días con calor).",
+        tip: "Muy tolerante a la sequía. ¡No la ahogues! Agua reposada o filtrada es mejor."
     },
     {
         name: "Calathea zebrina",
