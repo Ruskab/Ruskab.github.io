@@ -221,6 +221,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+        const storageKey = `plantCareApp_lastWatered_${plantIdForElement}`;
+        const storedDate = localStorage.getItem(storageKey);
         // Hide button if watered today
         const wasWateredToday = storedDate ? isWateredToday(storedDate) : false;
         if (wasWateredToday) {
