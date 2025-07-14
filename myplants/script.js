@@ -20,14 +20,14 @@ function formatDateAsAgo(dateString) {
             // Calculate difference in days
             const diffTime = todayToCompare.getTime() - dateToCompare.getTime();
             // Use Math.floor for days difference if it's past, Math.ceil could be misleading for "X days ago"
-            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
-            
-            if (diffDays > 1) { 
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+            if (diffDays > 1) {
                 return `Regada hace ${diffDays} días`;
-            } else if (diffDays === 1 ) { 
+            } else if (diffDays === 1 ) {
                 // This handles the case where it's more than 24 hours but less than 48 hours,
                 // and wasn't caught by the simple "yesterday" check (e.g. due to time part).
-                return "Regada ayer"; 
+                return "Regada ayer";
             } else if (diffDays < 0) {
                  // Date is in the future
                 return ""; // Or a specific message like "Fecha futura"
@@ -49,7 +49,7 @@ function isWateredToday(dateString) {
     try {
         const date = new Date(dateString);
         const today = new Date();
-        
+
         return date.getDate() === today.getDate() &&
                date.getMonth() === today.getMonth() &&
                date.getFullYear() === today.getFullYear();
@@ -89,7 +89,7 @@ const plantsData = [
         watering: "Cuando el centímetro superior del sustrato comience a secarse. Mantener húmedo, no empapado.",
         checkFrequency: "2-4 días (necesita atención frecuente con calor).",
         tip: "¡Ama la humedad! El 66.8% es genial. Agua filtrada o de lluvia es ideal."
-    },    
+    },
     {
         name: "Areca",
         scientificName: "Chrysalidocarpus lutescens",
@@ -162,13 +162,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const info = document.createElement('div');
         info.className = 'plant-info flex-grow';
 
+        const nameContainer = document.createElement('div');
+        nameContainer.className = 'flex items-center gap-2';
+
         const nameP = document.createElement('p');
         nameP.className = 'plant-name';
         nameP.textContent = plant.name;
 
+        const statusIndicator = document.createElement('div');
+        statusIndicator.className = 'status-dot';
+
+        nameContainer.appendChild(nameP);
+        nameContainer.appendChild(statusIndicator);
+
         const instructionsDiv = document.createElement('div');
         instructionsDiv.className = 'watering-instructions';
-        
+
         const waterWhenP = document.createElement('p');
         const waterWhenLabel = document.createElement('span');
         waterWhenLabel.className = 'instruction-label';
@@ -193,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
             instructionsDiv.appendChild(tipP);
         }
 
-        info.appendChild(nameP);
+        info.appendChild(nameContainer);
         info.appendChild(instructionsDiv);
 
         const buttonContainer = document.createElement('div');
@@ -210,12 +219,10 @@ document.addEventListener('DOMContentLoaded', () => {
         wateredButton.textContent = 'Regar';
         wateredButton.dataset.plantname = plant.name;
 
-        // Verificar si la planta fue regada hoy
-        const storageKey = `plantCareApp_lastWatered_${plantIdForElement}`;
-        const storedDate = localStorage.getItem(storageKey);
+
+
+        // Hide button if watered today
         const wasWateredToday = storedDate ? isWateredToday(storedDate) : false;
-        
-        // Ocultar el botón si fue regada hoy
         if (wasWateredToday) {
             wateredButton.style.display = 'none';
         }
@@ -232,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (storedDate) {
             lastWateredDisplay.textContent = formatDateAsAgo(storedDate);
         } else {
-            lastWateredDisplay.textContent = "";
+            lastWateredDisplay.textContent = "Aún no se ha regado";
         }
 
         return card;
@@ -246,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Event Delegation for "Regada hoy" buttons
     allPlantsGrid.addEventListener('click', function(event) {
         const targetButton = event.target.closest('.watered-button');
-        
+
         if (targetButton) {
             const plantName = targetButton.dataset.plantname;
             if (plantName) {
@@ -258,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem(storageKey, nowDateString);
 
                 const displayDate = formatDateAsAgo(nowDateString);
-                
+
                 const lastWateredDisplayElement = document.getElementById(`last-watered-${plantIdForStorage}`);
                 if (lastWateredDisplayElement) {
                     lastWateredDisplayElement.textContent = displayDate;
@@ -268,6 +275,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ocultar el botón después de regar
                 targetButton.style.display = 'none';
+
+                // Update status indicator
+                const card = targetButton.closest('.plant-card');
+                const statusIndicator = card.querySelector('.plant-status-indicator');
+                if (statusIndicator) {
+                    statusIndicator.style.backgroundColor = '#4ade80'; // green-400
+                }
+            }
+        }
+    });
+
+    // Update status indicators on load
+    document.querySelectorAll('.plant-card').forEach(card => {
+        const plantName = card.querySelector('.plant-name').textContent;
+        const plant = plantsData.find(p => p.name === plantName);
+        if (plant) {
+            const plantIdForElement = plant.name.replace(/\s+/g, '-').toLowerCase();
+            const storageKey = `plantCareApp_lastWatered_${plantIdForElement}`;
+            const storedDate = localStorage.getItem(storageKey);
+            const statusIndicator = card.querySelector('.status-dot');
+
+            if (storedDate) {
+                const lastWateredDate = new Date(storedDate);
+                const today = new Date();
+                const daysSinceWatered = Math.floor((today.getTime() - lastWateredDate.getTime()) / (1000 * 60 * 60 * 24));
+
+                const freqMatch = plant.checkFrequency.match(/(\d+)-(\d+)\s*días/);
+                if (freqMatch) {
+                    const minDays = parseInt(freqMatch[1], 10);
+                    const maxDays = parseInt(freqMatch[2], 10);
+
+                    if (daysSinceWatered < minDays) {
+                        statusIndicator.style.backgroundColor = '#4ade80'; // green-400
+                    } else if (daysSinceWatered >= minDays && daysSinceWatered <= maxDays) {
+                        statusIndicator.style.backgroundColor = '#facc15'; // yellow-400
+                    } else {
+                        statusIndicator.style.backgroundColor = '#f87171'; // red-400
+                    }
+                }
+            } else {
+                statusIndicator.style.backgroundColor = '#9ca3af'; // gray-400 - No data
             }
         }
     });
