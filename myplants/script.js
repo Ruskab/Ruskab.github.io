@@ -150,10 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const imageWrapper = document.createElement('div');
         imageWrapper.className = 'plant-image-wrapper';
 
-        const statusIndicator = document.createElement('div');
-        statusIndicator.className = 'plant-status-indicator';
-        imageWrapper.appendChild(statusIndicator);
-
         const img = document.createElement('img');
         img.src = plant.imageUrl || 'https://placehold.co/300x300/e2e8f0/94a3b8?text=' + encodeURIComponent(plant.imagePlaceholder || 'Plant Image');
         img.alt = plant.name;
@@ -166,9 +162,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const info = document.createElement('div');
         info.className = 'plant-info flex-grow';
 
+        const nameContainer = document.createElement('div');
+        nameContainer.className = 'flex items-center gap-2';
+
         const nameP = document.createElement('p');
         nameP.className = 'plant-name';
         nameP.textContent = plant.name;
+
+        const statusIndicator = document.createElement('div');
+        statusIndicator.className = 'status-dot';
+
+        nameContainer.appendChild(nameP);
+        nameContainer.appendChild(statusIndicator);
 
         const instructionsDiv = document.createElement('div');
         instructionsDiv.className = 'watering-instructions';
@@ -197,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
             instructionsDiv.appendChild(tipP);
         }
 
-        info.appendChild(nameP);
+        info.appendChild(nameContainer);
         info.appendChild(instructionsDiv);
 
         const buttonContainer = document.createElement('div');
@@ -214,31 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
         wateredButton.textContent = 'Regar';
         wateredButton.dataset.plantname = plant.name;
 
-        // Status indicator logic
-        const storageKey = `plantCareApp_lastWatered_${plantIdForElement}`;
-        const storedDate = localStorage.getItem(storageKey);
-
-        if (storedDate) {
-            const lastWateredDate = new Date(storedDate);
-            const today = new Date();
-            const daysSinceWatered = Math.floor((today.getTime() - lastWateredDate.getTime()) / (1000 * 60 * 60 * 24));
-
-            const freqMatch = plant.checkFrequency.match(/(\d+)-(\d+)\s*días/);
-            if (freqMatch) {
-                const minDays = parseInt(freqMatch[1], 10);
-                const maxDays = parseInt(freqMatch[2], 10);
-
-                if (daysSinceWatered < minDays) {
-                    statusIndicator.style.backgroundColor = '#4ade80'; // green-400
-                } else if (daysSinceWatered >= minDays && daysSinceWatered <= maxDays) {
-                    statusIndicator.style.backgroundColor = '#facc15'; // yellow-400
-                } else {
-                    statusIndicator.style.backgroundColor = '#f87171'; // red-400
-                }
-            }
-        } else {
-            statusIndicator.style.backgroundColor = '#9ca3af'; // gray-400 - No data
-        }
 
 
         // Hide button if watered today
@@ -302,6 +282,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (statusIndicator) {
                     statusIndicator.style.backgroundColor = '#4ade80'; // green-400
                 }
+            }
+        }
+    });
+
+    // Update status indicators on load
+    document.querySelectorAll('.plant-card').forEach(card => {
+        const plantName = card.querySelector('.plant-name').textContent;
+        const plant = plantsData.find(p => p.name === plantName);
+        if (plant) {
+            const plantIdForElement = plant.name.replace(/\s+/g, '-').toLowerCase();
+            const storageKey = `plantCareApp_lastWatered_${plantIdForElement}`;
+            const storedDate = localStorage.getItem(storageKey);
+            const statusIndicator = card.querySelector('.status-dot');
+
+            if (storedDate) {
+                const lastWateredDate = new Date(storedDate);
+                const today = new Date();
+                const daysSinceWatered = Math.floor((today.getTime() - lastWateredDate.getTime()) / (1000 * 60 * 60 * 24));
+
+                const freqMatch = plant.checkFrequency.match(/(\d+)-(\d+)\s*días/);
+                if (freqMatch) {
+                    const minDays = parseInt(freqMatch[1], 10);
+                    const maxDays = parseInt(freqMatch[2], 10);
+
+                    if (daysSinceWatered < minDays) {
+                        statusIndicator.style.backgroundColor = '#4ade80'; // green-400
+                    } else if (daysSinceWatered >= minDays && daysSinceWatered <= maxDays) {
+                        statusIndicator.style.backgroundColor = '#facc15'; // yellow-400
+                    } else {
+                        statusIndicator.style.backgroundColor = '#f87171'; // red-400
+                    }
+                }
+            } else {
+                statusIndicator.style.backgroundColor = '#9ca3af'; // gray-400 - No data
             }
         }
     });
