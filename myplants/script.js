@@ -61,26 +61,6 @@ function isWateredToday(dateString) {
 
 const plantsData = [
     {
-        name: "Potho Neón",
-        scientificName: "Epipremnum aureum 'Neon'",
-        emoji: "🪴",
-        imagePlaceholder: "Imagen de Potho Neón", // Retained for consistency, though imageUrl is primary
-        imageUrl: "image/potusneon.png",
-        watering: "Cuando los 2-5 cm superiores del sustrato estén secos.",
-        checkFrequency: "3-5 días (con 25.7°C).",
-        tip: "Prefiere quedarse un poco corto de agua que pasarse. Hojas lacias pueden ser señal de sed."
-    },
-    {
-        name: "Palmera de Salón",
-        scientificName: "Chamaedorea elegans",
-        emoji: "🌴",
-        imagePlaceholder: "Imagen de Palmera de Salón",
-        imageUrl: "image/palmerasalon.jpg",
-        watering: "Cuando los 2-3 cm superiores del sustrato estén secos.",
-        checkFrequency: "4-7 días (más cerca de 4-5 días con calor).",
-        tip: "Sensible al exceso de agua. La humedad ambiental actual le gusta."
-    },
-    {
         name: "Dracaena",
         scientificName: "Dracaena fragrans - Tronco de Brasil",
         emoji: "🌱",
@@ -109,17 +89,7 @@ const plantsData = [
         watering: "Cuando el centímetro superior del sustrato comience a secarse. Mantener húmedo, no empapado.",
         checkFrequency: "2-4 días (necesita atención frecuente con calor).",
         tip: "¡Ama la humedad! El 66.8% es genial. Agua filtrada o de lluvia es ideal."
-    },
-    {
-        name: "Yuca",
-        scientificName: "Yucca elephantipes",
-        emoji: "🌵",
-        imagePlaceholder: "Imagen de Yuca",
-        imageUrl: "image/yuca.jpg",
-        watering: "Cuando la mayor parte del sustrato esté seco. Muy tolerante a la sequía.",
-        checkFrequency: "10-20 días (o más si está a pleno sol).",
-        tip: "El exceso de riego es su enemigo. Drenaje excelente es crucial."
-    },
+    },    
     {
         name: "Areca",
         scientificName: "Chrysalidocarpus lutescens",
@@ -141,14 +111,24 @@ const plantsData = [
         tip: "Muy resistente. Similar al Potho Neón, mejor pecar de seco que de húmedo."
     },
     {
-        name: "calatheazebra",
-        scientificName: "",
-        emoji: "✨",
-        imagePlaceholder: "",
-        imageUrl: "image/calatheazebra.png",
-        watering: "",
-        checkFrequency: "",
-        tip: ""
+        name: "Potho Neón",
+        scientificName: "Epipremnum aureum 'Neon'",
+        emoji: "🪴",
+        imagePlaceholder: "Imagen de Potho Neón", // Retained for consistency, though imageUrl is primary
+        imageUrl: "image/potusneon.png",
+        watering: "Cuando los 2-5 cm superiores del sustrato estén secos.",
+        checkFrequency: "3-5 días (con 25.7°C).",
+        tip: "Prefiere quedarse un poco corto de agua que pasarse. Hojas lacias pueden ser señal de sed."
+    },
+    {
+        name: "Yuca",
+        scientificName: "Yucca elephantipes",
+        emoji: "🌵",
+        imagePlaceholder: "Imagen de Yuca",
+        imageUrl: "image/yuca.jpg",
+        watering: "Cuando la mayor parte del sustrato esté seco. Muy tolerante a la sequía.",
+        checkFrequency: "10-20 días (o más si está a pleno sol).",
+        tip: "El exceso de riego es su enemigo. Drenaje excelente es crucial."
     }
 ];
 
