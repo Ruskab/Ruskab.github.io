@@ -65,7 +65,7 @@ const plantsData = [
         scientificName: "Epipremnum aureum 'Neon'",
         emoji: "🪴",
         imagePlaceholder: "Imagen de Potho Neón", // Retained for consistency, though imageUrl is primary
-        imageUrl: "image/photoneon.jpg",
+        imageUrl: "image/potusneon.png",
         watering: "Cuando los 2-5 cm superiores del sustrato estén secos.",
         checkFrequency: "3-5 días (con 25.7°C).",
         tip: "Prefiere quedarse un poco corto de agua que pasarse. Hojas lacias pueden ser señal de sed."
@@ -85,10 +85,20 @@ const plantsData = [
         scientificName: "Dracaena fragrans - Tronco de Brasil",
         emoji: "🌱",
         imagePlaceholder: "Imagen de Dracaena",
-        imageUrl: "image/dracaena.jpg",
+        imageUrl: "image/dracaena_fragrans.png",
         watering: "Cuando los primeros 5 cm (o 1/3 de la maceta) estén bien secos.",
         checkFrequency: "7-14 días (más cerca de 7-10 días con calor).",
         tip: "Muy tolerante a la sequía. ¡No la ahogues! Agua reposada o filtrada es mejor."
+    },
+    {
+        name: "Dracaena fragrans hawaiian",
+        scientificName: "Dracaena fragrans hawaiian",
+        emoji: "🌱",
+        imagePlaceholder: "Imagen de Dracaena",
+        imageUrl: "image/dracaena_fragrans_hawaiian.png",
+        watering: "",
+        checkFrequency: "",
+        tip: ""
     },
     {
         name: "Calathea zebrina",
@@ -111,24 +121,34 @@ const plantsData = [
         tip: "El exceso de riego es su enemigo. Drenaje excelente es crucial."
     },
     {
-        name: "Palmera Areca",
+        name: "Areca",
         scientificName: "Chrysalidocarpus lutescens",
         emoji: "🌞",
         imagePlaceholder: "Imagen de Palmera Areca",
-        imageUrl: "image/palmeraareca.jpg",
+        imageUrl: "image/areca.png",
         watering: "Cuando los 2-4 cm superiores del sustrato estén secos.",
         checkFrequency: "4-7 días.",
         tip: "Le gusta la humedad ambiental. Evita que se seque por completo."
     },
     {
-        name: "Poto Dorado Colgante",
+        name: "Photo colgante",
         scientificName: "Epipremnum aureum",
         emoji: "✨",
         imagePlaceholder: "Imagen de Poto Dorado Colgante",
-        imageUrl: "image/photo.jpg", // Original placeholder
+        imageUrl: "image/potus.png",
         watering: "Cuando los 2-5 cm superiores del sustrato estén secos.",
         checkFrequency: "5-10 días.",
         tip: "Muy resistente. Similar al Potho Neón, mejor pecar de seco que de húmedo."
+    },
+    {
+        name: "calatheazebra",
+        scientificName: "",
+        emoji: "✨",
+        imagePlaceholder: "",
+        imageUrl: "image/calatheazebra.png",
+        watering: "",
+        checkFrequency: "",
+        tip: ""
     }
 ];
 
