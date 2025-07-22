@@ -79,6 +79,15 @@ const plantsData = [
         watering: "Cuando los primeros 5 cm (o 1/3 de la maceta) estén bien secos.",
         checkFrequency: "7-14 días (más cerca de 7-10 días con calor).",
         tip: "Muy tolerante a la sequía. ¡No la ahogues! Agua reposada o filtrada es mejor."
+    },{
+        name: "Monstera deliciosa",
+        scientificName: "",
+        emoji: "🌱",
+        imagePlaceholder: "Imagen de monstera",
+        imageUrl: "",
+        watering: "",
+        checkFrequency: "",
+        tip: ""
     },
     {
         name: "Calathea zebrina",
